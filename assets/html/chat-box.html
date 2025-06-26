@@ -1,0 +1,57 @@
+<!--
+   chat-box.html
+   
+   Copyright 2025 Jim Richardson <jim@phporyx.co.uk>
+   
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 2 of the License, or
+   (at your option) any later version.
+   
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+   
+   You should have received a copy of the GNU General Public License
+   along with this program; if not, write to the Free Software
+   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+   MA 02110-1301, USA.
+   
+   
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="https://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Chat</title>
+		<link rel="stylesheet" href="style.css" type="text/css" />
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+		<script type="text/javascript" src="chat.js"></script>
+	</head>
+	<body onload="setInterval('chat.update()', 1000)">
+		<div id="page-wrap">
+			<span style="display:none;" id="file-name">#file#</span>
+			<div id="chat-wrap" class="table-wrapper"><div id="chat-area" class= "chatbox"></div></div>
+			<form id="send-message-area">
+				<div style="width:100%;float:right;padding-right:1%;padding-left:1%;">
+					<select style="float:left;margin-left:1%;" name="emoji" id="emo">
+						<option value="">Choose Emoji</option>
+						#emojis#
+					</select>
+					<p>Your message: </p>
+					<textarea id="sendie" maxlength = '500' ></textarea>
+					<input type="hidden" id="id" name="file" value="jim.txt">
+					<div id="name-area" class="np">#user#</div>
+				</div>
+			</form>
+		</div>
+	</body>
+    <script type="text/javascript">
+		console.log("what we found ");
+		console.log(getSearchParams());
+		var chat =  new Chat();
+	</script>
+</html>
+
