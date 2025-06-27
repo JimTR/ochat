@@ -11,17 +11,17 @@ $nickname ='';
 $log = array();
 switch($function) {
 	case('getState'):
-		log_to ("debug.log",print_r($_POST,true));
+		//log_to ("debug.log",print_r($_POST,true));
 		if(file_exists($file)){
 			$lines = file($file);
-			log_to ("state.log","file count for $file = ".count($lines)); 
+			//log_to ("state.log","file count for $file = ".count($lines)); 
 		}
 		else{
 			//log_to("new.log","Could not find $file");
 			$nickname = "Chat Admin";
 			$message = "New Chat started $date";
 			$chat_text = "<div class='user'> $nickname</div><div class='msg'>$message</div>";
-			log_to($file,$chat_text);
+			//log_to($file,$chat_text);
 			$lines[]= $chat_text;
 		} 
 		$log['state'] = count($lines); 
@@ -38,12 +38,12 @@ switch($function) {
 				$log['msgs'] = $msgs;
 			}
 			elseif($msgs <  $state){
-				log_to("update.log",date("d-m-y h:i:s")."  msgs ($msgs) is smaller than state ($state)");
-				log_to ("update.log",print_r($lines,true));
+				//log_to("update.log",date("d-m-y h:i:s")."  msgs ($msgs) is smaller than state ($state)");
+				//log_to ("update.log",print_r($lines,true));
 				foreach ($lines as $key => $line){
 					// populate
 					if( $key+1 > $msgs  ){
-						log_to("loop.log", "key = $key state = $state msgs = $msgs line = $line");
+						//log_to("loop.log", "key = $key state = $state msgs = $msgs line = $line");
 						$text[] = trim($line);
 						$msgs ++;
 					} 
@@ -58,7 +58,7 @@ switch($function) {
 				$log['msgs'] = count($lines); // update the number of messages
 			}	
 			else{
-				log_to("update.log",date("d-m-y H:i:s")." there is a difference state ($state) msgs ($msgs)");
+				//log_to("update.log",date("d-m-y H:i:s")." there is a difference state ($state) msgs ($msgs)");
 				$text= array();
 				$log['state'] = $state;// + count($lines) - $state;
 				$last_line = end($lines); // get the last line
