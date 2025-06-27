@@ -21,7 +21,7 @@ switch($function) {
 			$nickname = "Chat Admin";
 			$message = "New Chat started $date";
 			$chat_text = "<div class='user'> $nickname</div><div class='msg'>$message</div>";
-			//log_to($file,$chat_text);
+			log_to($file,$chat_text);
 			$lines[]= $chat_text;
 		} 
 		$log['state'] = count($lines); 
