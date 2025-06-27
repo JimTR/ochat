@@ -73,7 +73,7 @@ function getStateOfChat(){
 			},
 			dataType: "json",
 			success: function(data){
-				//console.log(data);
+				console.log(data);
 				state = data.state;
 				instanse = false;
 			},
@@ -82,7 +82,9 @@ function getStateOfChat(){
 }
 
 function updateChat(){
-	matched = $(".chatbox .user");
+	matched = $(".user").length;
+	msgs = matched;
+	console.log("msgs set to "+msgs );
 	if(!instanse){
 		instanse = true;
 		$.ajax({
@@ -99,13 +101,14 @@ function updateChat(){
 			   dataType: "json",
 			   success: function(data){
 				   state = data.state;
+				   console.log(data);
 				   if(data.text.length >0){
 						chatarea = data.chatArea;
 						cuser = data.user;
 						for (var i = 0; i < data.text.length; i++) {
 							$('#chat-area').append($(data.text[i] +"</br>"));
 						}
-						console.log("msg area = "+chatarea+" cuser = " +cuser+" page user "+user);
+						console.log("msg area = "+chatarea+" cuser = " +cuser+" page user = "+user+" displayed msgs ="+msgs);
 						console.log(data);
 						if (user !== cuser){
 							console.log("this user needs notify");
@@ -120,7 +123,9 @@ function updateChat(){
 								showNotification(user+" has looged in not sure");
 							}
 						}
-						matched = $(".chatbox .user");
+						
+						msgs = $(".user").length;
+						//console.log("msgs now ="+msgs);
 						document.getElementById('chat-area').scrollTop = document.getElementById('chat-area').scrollHeight;
 					}
 					instanse = false;
@@ -150,7 +155,7 @@ function sendChat(message, nickname,msgs){
 		},
 		dataType: "json",
 		success: function(data){
-			//console.log("send chat "+data);
+			console.log("data");
 			updateChat();
 		},
 		});
