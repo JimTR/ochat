@@ -7,11 +7,11 @@ $emoji_root = "&#1285";
 for ($x = 12; $x <= 91; $x++) {
   $e.= "<option class='emoji' value='$emoji_root$x;'>$emoji_root$x;</option>";
 }
-$c_emoji = explode(PHP_EOL,trim(file_get_contents("data/emoji.txt")));
+$c_emoji = explode(PHP_EOL,trim(file_get_contents("images/emoji.lst")));
 foreach($c_emoji as $a){
 $e.="<option class='emoji' value='$a'>$a</option>";
 }
-$html = file_get_contents("chat-box.html");
+$html = file_get_contents("assets/html/chat-box.html");
 $html = str_replace("#file#",$file,$html);
 $html = str_replace("#user#",$user,$html);
 $html = str_replace("#emojis#",$e,$html);
